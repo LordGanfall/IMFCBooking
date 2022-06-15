@@ -57,41 +57,44 @@ class _MyBookingListState extends State<MyBookingList> {
         )));
     },
     child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 4.0),
-        child: Card(
-            color: Colors.blueGrey[900],
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: ListTile(
-              leading: const Icon(
-                Icons.assignment_outlined,
-                color: Colors.white,
-                size: 30,
+        padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10.0),
+        // ignore: sized_box_for_whitespace
+        child: Container(
+          height: 80,
+          child: Card(
+            elevation: 10,
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
               ),
-              title: Text(
-                data.bookid,
-                style: const TextStyle(
-                    color: Colors.blue,
-                    // fontWeight: FontWeight.bold,
-                    fontSize: 18),
-              ),
-              subtitle: Text(DateParser.parseDateTimeyMMMMd(data.bookdate),
-                  style: const TextStyle(color: Colors.blue, fontSize: 10)),
-              trailing: Text(
-                data.courtid,
-                style: const TextStyle(
-                    color: Colors.blue, 
-                    // fontWeight: FontWeight.bold,
-                    fontSize: 18),
-              ),
-            )),
+              child: ListTile(
+                leading: const Icon(
+                  Icons.sports_soccer,
+                  color: Colors.black,
+                  size: 30,
+                ),
+                title: Text(
+                  data.bookid,
+                  style: const TextStyle(
+                      color: Colors.black,
+                      // fontWeight: FontWeight.bold,
+                      fontSize: 18),
+                ),
+                subtitle: Text(DateParser.parseDateTimeyMMMMd(data.bookdate),
+                    style: const TextStyle(color: Colors.black, fontSize: 14)),
+                trailing: Text(
+                  data.courtid,
+                  style: const TextStyle(
+                      color: Colors.black, 
+                      // fontWeight: FontWeight.bold,
+                      fontSize: 18),
+                ),
+              )),
+        ),
       ),
   );
   
 }
-
-
 
 class Book {
   String? bookid;

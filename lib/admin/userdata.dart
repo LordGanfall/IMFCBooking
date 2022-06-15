@@ -77,6 +77,7 @@ class _UserDataState extends State<UserData> {
                   Positioned(
                     top: 30,
                     left: 130,
+                    // ignore: sized_box_for_whitespace
                     child: Container(
                       height: 150,
                       width: 250,

@@ -262,6 +262,7 @@ class _SignUpScreen extends State<SignUpScreen>{
       )
     );
   }
+  
   void signUp(String email, String password) async
   {
     if(_formKey.currentState!.validate())

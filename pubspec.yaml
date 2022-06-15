@@ -49,6 +49,15 @@ dependencies:
   fluttertoast: ^8.0.9
   flutter_credit_card: ^3.0.1
   credit_card: ^0.1.8
+  carousel_slider: ^4.1.1
+  shimmer: ^2.0.0
+  animated_splash_screen: ^1.2.0
+  flutter_launcher_icons: ^0.9.3
+
+# flutter_icons:
+#   android: true
+#   image_path: "assets/IMFC.png"
+
 
 dev_dependencies:
   flutter_test:
@@ -95,6 +104,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: Pacifico
+      fonts:
+        - asset: assets/fonts/Pacifico-Regular.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

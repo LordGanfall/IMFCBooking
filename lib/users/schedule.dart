@@ -5,14 +5,14 @@ import 'package:booking100/users/sidebar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class MyBooking extends StatefulWidget {
-  const MyBooking({Key? key}) : super(key: key);
+class Schedule extends StatefulWidget {
+  const Schedule({Key? key}) : super(key: key);
 
   @override
-  State<MyBooking> createState() => _MyBookingState();
+  State<Schedule> createState() => _ScheduleState();
 }
 
-class _MyBookingState extends State<MyBooking> {
+class _ScheduleState extends State<Schedule> {
   @override
   Widget build(BuildContext context) {
    return Scaffold(
@@ -24,7 +24,7 @@ class _MyBookingState extends State<MyBooking> {
       ),
       body: Column(
         children: const [
-          Text('Booking History', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),),
+          Text('Court Schedule', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),),
           
             Flexible(child: MyBookingList()),
         ],

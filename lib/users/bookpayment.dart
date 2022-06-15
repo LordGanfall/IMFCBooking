@@ -8,11 +8,13 @@ import 'package:flutter_credit_card/credit_card_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class BookingPayment extends StatefulWidget {
-   late DateTime? getData;
+  late DateTime? getData;
   final String courtprice;
-  BookingPayment({Key? key,
-  required this.getData, 
-  required this.courtprice, }) : super(key: key);
+  BookingPayment({
+    Key? key,
+    required this.getData,
+    required this.courtprice,
+  }) : super(key: key);
 
   @override
   State<BookingPayment> createState() => _BookPaymentState();
@@ -20,23 +22,23 @@ class BookingPayment extends StatefulWidget {
 
 class _BookPaymentState extends State<BookingPayment> {
   String cardNumber = '';
-  String expiryDate= '';
+  String expiryDate = '';
   String cardHolderName = '';
-  String cvvCode= '';
+  String cvvCode = '';
   bool isCvvFocused = false;
-   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final user = FirebaseAuth.instance.currentUser!;
-   @override
+  @override
   void initState() {
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    return Scaffold(
       appBar: AppBar(
-      title: const Text("INDERA MAHKOTA FUTSAL"),
-      centerTitle: true,
+        title: const Text("INDERA MAHKOTA FUTSAL"),
+        centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 7, 2, 85),
         elevation: 0,
       ),
@@ -44,7 +46,7 @@ class _BookPaymentState extends State<BookingPayment> {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(width: 40),
+            const SizedBox(width: 40),
             CreditCardWidget(
               cardBgColor: Colors.black,
               cardNumber: cardNumber,
@@ -52,97 +54,89 @@ class _BookPaymentState extends State<BookingPayment> {
               cardHolderName: cardHolderName,
               cvvCode: cvvCode,
               showBackView: isCvvFocused,
-
               obscureCardNumber: true,
-              obscureCardCvv: true, onCreditCardWidgetChange: (CreditCardBrand ) {  },),
+              obscureCardCvv: true,
+              onCreditCardWidgetChange: ( CreditCardBrand) {},
+            ),
             Expanded(
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      CreditCardForm(cardNumber: cardNumber,
-                        expiryDate: expiryDate,
-                        cardHolderName: cardHolderName,
-                        cvvCode: cvvCode,
-                        onCreditCardModelChange: onCreditCardModelChange,
-                        themeColor: Colors.black,
-                        formKey: _formKey,
-                        cardNumberDecoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Number',
-                            hintText: 'xxxx xxxx xxxx xxxx'
-                        ),
-                        expiryDateDecoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Expired Date',
-                            hintText: 'xx/xx'
-                        ),
-                        cvvCodeDecoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'CVV',
-                            hintText: 'xxx'
-                        ),
-                        cardHolderDecoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Card Holder',
-                        ),
+              child: Column(
+                children: [
+                  CreditCardForm(
+                    cardNumber: cardNumber,
+                    expiryDate: expiryDate,
+                    cardHolderName: cardHolderName,
+                    cvvCode: cvvCode,
+                    onCreditCardModelChange: onCreditCardModelChange,
+                    themeColor: Colors.black,
+                    formKey: _formKey,
+                    cardNumberDecoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Number',
+                        hintText: 'xxxx xxxx xxxx xxxx'),
+                    expiryDateDecoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Expired Date',
+                        hintText: 'xx/xx'),
+                    cvvCodeDecoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'CVV',
+                        hintText: 'xxx'),
+                    cardHolderDecoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Card Holder',
+                    ),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40.0),
                       ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40.0),
-                            ),
-                            //primary: Color(0xff1b447b),
-                            primary: const Color.fromARGB(255, 7, 2, 85),
+                      //primary: Color(0xff1b447b),
+                      primary: const Color.fromARGB(255, 7, 2, 85),
+                    ),
+                    child: Container(
+                      //width: double.infinity,
+                      width: 330,
 
-                        ),
-                        child: Container(
-                          //width: double.infinity,
-                          width: 330,
+                      margin: EdgeInsets.all(10.0),
 
-                          margin: EdgeInsets.all(10.0),
-
-                          child:
-
-                          Center(
-                            child: Text(
-                              'Proceed Payment',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'halter',
-                                fontSize: 14,
-                                package: 'flutter_credit_card',
-
-                              ),
-                            ),
+                      child: const Center(
+                        child: Text(
+                          'Proceed Payment',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'halter',
+                            fontSize: 14,
+                            package: 'flutter_credit_card',
                           ),
                         ),
+                      ),
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        print('valid!');
+                        sendData();
 
-
-                        onPressed: (){
-
-                        
-                          if (_formKey.currentState!.validate()) {
-                              print('valid!');
-                              sendData();
-
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => UserHomePage()));
-                            } else {
-                              print('invalid!');
-                            }
-                          
-                        },)
-                    ],
-                  ),
-                )),
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const UserHomePage()));
+                      } else {
+                        print('invalid!');
+                      }
+                    },
+                  )
+                ],
+              ),
+            )),
           ],
         ),
       ),
     );
   }
-    void onCreditCardModelChange(CreditCardModel creditCardModel){
+
+  void onCreditCardModelChange(CreditCardModel creditCardModel) {
     setState(() {
       cardNumber = creditCardModel.cardNumber;
       expiryDate = creditCardModel.expiryDate;
@@ -151,8 +145,6 @@ class _BookPaymentState extends State<BookingPayment> {
       isCvvFocused = creditCardModel.isCvvFocused;
     });
   }
-
-
 
   sendData() async {
     print("Sending Data.....");
@@ -164,11 +156,7 @@ class _BookPaymentState extends State<BookingPayment> {
       print("post created");
       // ignore: avoid_single_cascade_in_expression_statements
       FirebaseFirestore.instance
-        ..collection("user")
-            .doc(user.email)
-            .collection('booked')
-            .doc(id)
-            .set({
+        ..collection("user").doc(user.email).collection('booked').doc(id).set({
           "courtprice": widget.courtprice,
           "bookdate": widget.getData,
           'createddate': DateTime.now().toString(),
@@ -194,52 +182,3 @@ class _BookPaymentState extends State<BookingPayment> {
     }
   }
 }
-
-
-
-  // showDialog
-  //                         (context: context, 
-  //                         builder: (context){
-  //                           return Dialog(
-  //               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-  //               elevation: 16,
-  //               child: Container(
-  //                 height: 400.0,
-  //                 width: 360.0,
-  //                 child: ListView(
-  //                   children: <Widget>[
-  //                     SizedBox(height: 20),
-  //                     Center(
-  //                       child: Text(
-  //                         "Payment Successfull",
-  //                         style: TextStyle(fontSize: 24, color: Colors.black, fontWeight: FontWeight.bold),
-  //                       ),
-  //                     ),
-  //                     SizedBox(
-  //                           height: 180,
-  //                           child: Image.asset("assets/payment.png",),),
-  //                           SizedBox(
-  //                             child: Center(
-  //                               child: Column(
-  //                                 crossAxisAlignment: CrossAxisAlignment.start,
-  //                                 children: [
-  //                                   Text('Name : Naim Shafiq',style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
-  //                                   SizedBox(height: 10),
-  //                                   Text('Booking Date : Jun 28, 2022',style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
-  //                                   SizedBox(height: 10),
-  //                                   Text('Booking Time : 8:00 PM - 9:00 PM',style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
-  //                                   SizedBox(height: 10),
-  //                                   Text('Court ID : Court A',style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
-  //                                   SizedBox(height: 10),
-  //                                   Text('Total Price : RM 100.00',style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
-                                    
-                                    
-  //                                 ],
-  //                               ),
-  //                             ),
-  //                           )
-  //                   ],
-  //                 ),
-  //               ),
-  //             );
-  //                         });

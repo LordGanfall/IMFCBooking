@@ -19,6 +19,7 @@ class CourtSlot extends StatefulWidget {
 }
 
 class _CourtSlotState extends State<CourtSlot> {
+  // ignore: prefer_final_fields
   DatePickerController _controller = DatePickerController();
 
   DateTime selectedValue = DateTime.now();
@@ -40,6 +41,7 @@ class _CourtSlotState extends State<CourtSlot> {
         backgroundColor: const Color.fromARGB(255, 7, 2, 85),
         elevation: 0,
       ),
+            // ignore: avoid_unnecessary_containers
             body: Container(
             child: Column(children: [
           Container(
@@ -50,7 +52,7 @@ class _CourtSlotState extends State<CourtSlot> {
               children: [
                 ShaderMask(
                   shaderCallback: (rect) {
-                    return LinearGradient(
+                    return const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [Colors.black, Colors.transparent],
@@ -61,18 +63,18 @@ class _CourtSlotState extends State<CourtSlot> {
                       fit: BoxFit.fill, height: 200, width: double.infinity),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 4.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     // ignore: prefer_const_literals_to_create_immutables
                     children: [
-                      SizedBox(height: 50),
+                      const SizedBox(height: 50),
                       Center(
                         child: Column(
                           children: [
                             Text(widget.courtid,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 26.0,
                                   fontWeight: FontWeight.w600,
@@ -80,7 +82,7 @@ class _CourtSlotState extends State<CourtSlot> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       DatePicker(
                         DateTime.now(),
                         width: 60,
@@ -100,10 +102,10 @@ class _CourtSlotState extends State<CourtSlot> {
                           });
                         },
                       ),
-                      SizedBox(height: 6),
+                     const SizedBox(height: 6),
                       Center(
                         child: Text('Court Name : ' +widget.courtname,
-                            style: TextStyle(
+                            style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w600,

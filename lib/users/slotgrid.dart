@@ -103,13 +103,14 @@ class _BookingGridState extends State<BookingGrid> {
             ),
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
+        // ignore: avoid_unnecessary_containers
         Container(
           child: Center(
           child: ElevatedButton(
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 7, 2, 85)),
-              padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(80, 5, 80, 5)),
+              padding: MaterialStateProperty.all(const EdgeInsets.fromLTRB(80, 5, 80, 5)),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),

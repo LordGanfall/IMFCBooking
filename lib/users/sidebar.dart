@@ -1,6 +1,8 @@
 import 'package:booking100/model/user_model.dart';
 import 'package:booking100/users/homepage.dart';
 import 'package:booking100/users/logout.dart';
+import 'package:booking100/users/profile.dart';
+import 'package:booking100/users/schedule.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -77,15 +79,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             const SizedBox(height: 20),
             const Divider(color: Colors.white70, thickness: 1.0),
             const SizedBox(height: 20),
-             buildMenuItem(
-              text: 'Contact Us',
-              icon: Icons.contact_mail,
-              onClicked: () => selectedItem(context, 3),
-            ),
+             
+          
              buildMenuItem(
               text: 'Log Out',
               icon: Icons.exit_to_app,
-              onClicked: () => selectedItem(context, 4),
+              onClicked: () => selectedItem(context, 3),
             ),
              ],
               ),
@@ -149,15 +148,12 @@ Widget buildMenuItem({
       Navigator.of(context).push(MaterialPageRoute(builder: (context) => const UserHomePage())); 
       break;
       case 1:
-      // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CourtSchedule())); 
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Schedule())); 
       break;
       case 2:
-      // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const UserProfile())); 
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const UserProfile())); 
       break;
-      case 3:
-      // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ContactUs())); 
-      break;
-      case 4: //logout function
+      case 3: //logout function
       Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LogoutAlert())); 
       break;
     }

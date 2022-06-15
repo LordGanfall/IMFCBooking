@@ -1,5 +1,6 @@
 import 'package:booking100/model/user_model.dart';
-import 'package:booking100/try/userprofile.dart';
+import 'package:booking100/users/about.dart';
+import 'package:booking100/users/courtdetails.dart';
 import 'package:booking100/users/mybooking.dart';
 import 'package:booking100/users/selectcourt.dart';
 import 'package:booking100/users/sidebar.dart';
@@ -49,6 +50,7 @@ class _UserHomePageState extends State<UserHomePage> {
           children: const [
             BookingCard(),
             QuickAction(),
+            ImageQuote()
           ],
         ),
       )),
@@ -191,7 +193,7 @@ class QuickAction extends StatelessWidget {
               image:
                   "https://previews.123rf.com/images/ylivdesign/ylivdesign1609/ylivdesign160902001/62550450-futsal-or-indoor-soccer-field-icon-in-outline-style-on-a-white-background-vector-illustration.jpg",
               onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const UserProfile()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const CourtDetail()));
               }
               ),
           Action(
@@ -199,7 +201,7 @@ class QuickAction extends StatelessWidget {
               image:
                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0BteiZh_qkGFpbJPhPBq4hEXbVYh7X8XfoQZpMQTcjg3yJYnQCOcbgP-rok532z2RoxA&usqp=CAU",
               onTap: () {
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) => const BookingPayment()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const AboutUs()));
               }
               ),
           
@@ -254,3 +256,27 @@ class Action extends StatelessWidget {
     );
   }
 }
+
+class ImageQuote extends StatefulWidget {
+  const ImageQuote({Key? key}) : super(key: key);
+
+  @override
+  State<ImageQuote> createState() => _ImageQuoteState();
+}
+
+class _ImageQuoteState extends State<ImageQuote> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(16),
+    child: Column(children: [
+      SizedBox(
+                      height: 200,
+                      child: Image.network(
+                          'https://i.pinimg.com/736x/5b/7d/3f/5b7d3f77238e7354a7a4672d2edffa83--soccer-sayings-football-quotes.jpg')),
+    ],)
+    );
+  }
+}
+
+// https://i.pinimg.com/736x/5b/7d/3f/5b7d3f77238e7354a7a4672d2edffa83--soccer-sayings-football-quotes.jpg

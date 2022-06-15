@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
 import '../model/dataparser.dart';
 
@@ -52,55 +51,63 @@ class _BookingInfoState extends State<BookingInfo> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    SizedBox(height: 30),
+                   const SizedBox(height: 30),
                     Center(
                       child: Text("Booking Info",
                           textAlign: TextAlign.center,
                           style: GoogleFonts.lato(
-                              fontSize: 18, color: Colors.black)),
+                              fontSize: 28, color: Colors.black)),
                     ),
-                    SizedBox(height: 16),
-                    QrImage(
-                      backgroundColor: Colors.white,
-                      data: widget.bookid,
-                      version: QrVersions.auto,
-                      size: 200,
-                      gapless: false,
+                    const SizedBox(height: 16),
+                    // ignore: sized_box_for_whitespace
+                    Container(
+                       width: 380,
+                    height: 280,
+                      child: Card(
+                        elevation: 16,
+                        child: Column(
+                          children: [
+                           const Text(
+                              'Booking ID',
+                              style: TextStyle(color: Colors.black, fontSize: 26),
+                          
                     ),
-                    
-                    SizedBox(height: 35),
                     Text(
                       widget.bookid,
-                      style: TextStyle(color: Colors.black, fontSize: 20),
+                      style: const TextStyle(color: Colors.black, fontSize: 20),
                     ),
-                    SizedBox(height: 35),
-                    Divider(thickness: 1, color: Colors.black),
-                    SizedBox(height: 35),
+                   const SizedBox(height: 35),
+                   const Divider(thickness: 1, color: Colors.black),
+                   const SizedBox(height: 35),
                      Text(
                       "Email: " + widget.email,
-                      style: TextStyle(color: Colors.black, fontSize: 20),
+                      style: const TextStyle(color: Colors.black, fontSize: 20),
                     ),
-                    SizedBox(height: 5),
+                   const SizedBox(height: 5),
                     Text(
                       "Court: " + widget.courtid,
-                      style: TextStyle(color: Colors.black, fontSize: 20),
+                      style: const TextStyle(color: Colors.black, fontSize: 20),
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Text(
                       "Court: " + widget.courtname,
-                      style: TextStyle(color: Colors.black, fontSize: 20),
+                      style: const TextStyle(color: Colors.black, fontSize: 20),
                     ),
 
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Text(
                       "Book Date: " +
                           DateParser.parseDateTimeyMdAddJM(widget.bookdate),
-                      style: TextStyle(color: Colors.black, fontSize: 20),
+                      style: const TextStyle(color: Colors.black, fontSize: 20),
                     ),
-                    SizedBox(height: 5),
+                   const SizedBox(height: 5),
                   ],
                 ),
               ),
+                ),
+                          ],
+                        ),
+                      ),
           ],
         ),
       ),
