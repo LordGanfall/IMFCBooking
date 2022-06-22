@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:booking100/model/user_model.dart';
 import 'package:booking100/users/about.dart';
 import 'package:booking100/users/courtdetails.dart';
 import 'package:booking100/users/mybooking.dart';
 import 'package:booking100/users/selectcourt.dart';
 import 'package:booking100/users/sidebar.dart';
+import 'package:booking100/users/userhomepage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -48,9 +51,10 @@ class _UserHomePageState extends State<UserHomePage> {
       child: SingleChildScrollView(
         child: Column(
           children: const [
+            TopBar(),
+            // Clock(),
             BookingCard(),
             QuickAction(),
-            ImageQuote()
           ],
         ),
       )),
@@ -257,26 +261,110 @@ class Action extends StatelessWidget {
   }
 }
 
-class ImageQuote extends StatefulWidget {
-  const ImageQuote({Key? key}) : super(key: key);
 
-  @override
-  State<ImageQuote> createState() => _ImageQuoteState();
-}
+class TopBar extends StatelessWidget {
+  const TopBar({Key? key}) : super(key: key);
 
-class _ImageQuoteState extends State<ImageQuote> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(16),
-    child: Column(children: [
-      SizedBox(
-                      height: 200,
-                      child: Image.network(
-                          'https://i.pinimg.com/736x/5b/7d/3f/5b7d3f77238e7354a7a4672d2edffa83--soccer-sayings-football-quotes.jpg')),
-    ],)
+    return Column(
+        children: <Widget>[
+          ClipPath(
+            clipper: MyClipper(),
+            child: Container(
+              padding: const EdgeInsets.fromLTRB(40, 0, 20, 0),
+              height: 280,
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color.fromARGB(255, 7, 2, 85),
+                    Color.fromARGB(255, 11, 106, 184),
+                  ]
+                ),
+                image: DecorationImage(
+                  image: AssetImage("assets/snow.png"),
+                  fit: BoxFit.cover
+                )
+              ),
+              child: Column(
+                // crossAxisAlignment: CrossAxisAlignment.start,
+                children: const <Widget>[
+                        Text('Life Is Like Futsal, You Need Goals!',
+                        style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                    Image(
+                      image: AssetImage("assets/Twisting_Tiger.png",),
+                      width: 190,
+                      fit: BoxFit.fitWidth,
+                      alignment: Alignment.centerLeft,
+                      ),
+                      
+                ],
+              ),
+            ),
+          ),
+        ] 
     );
   }
 }
 
-// https://i.pinimg.com/736x/5b/7d/3f/5b7d3f77238e7354a7a4672d2edffa83--soccer-sayings-football-quotes.jpg
+class MyClipper extends CustomClipper<Path>{
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0, size.height - 80);
+    path.quadraticBezierTo(
+      size.width/2, size.height, size.width, size.height - 80);
+      path.lineTo(size.width, 0);
+      path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
+  }
+}
+
+
+// class Clock extends StatefulWidget {
+//   const Clock({Key? key}) : super(key: key);
+
+//   @override
+//   State<Clock> createState() => _ClockState();
+// }
+
+// class _ClockState extends State<Clock> {
+//   TimeOfDay _timeOfDay = TimeOfDay.now();
+//   @override
+//   void initState(){
+//     super.initState();
+//     Timer.periodic(Duration(seconds: 1), (timer){
+//       if (_timeOfDay.minute != TimeOfDay.now().minute) {
+//         setState(() {
+//           _timeOfDay = TimeOfDay.now();
+//         });
+//       }
+//     });
+//   }
+//   Widget build(BuildContext context) {
+//     String _period = _timeOfDay.period == DayPeriod.am ? "AM" : "PM";
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: [
+//         Text("${_timeOfDay.hourOfPeriod}:${_timeOfDay.minute}",
+//         style: Theme.of(context).textTheme.headline3,
+//         ),
+//         const SizedBox(width:5),
+//         RotatedBox(
+//           quarterTurns: 3,
+//           child: Text(_period,
+//           style: TextStyle(fontSize: 16)
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
