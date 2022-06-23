@@ -1,175 +1,61 @@
-import 'dart:async';
-
 import 'package:booking100/model/user_model.dart';
 import 'package:booking100/users/about.dart';
 import 'package:booking100/users/courtdetails.dart';
 import 'package:booking100/users/mybooking.dart';
 import 'package:booking100/users/selectcourt.dart';
 import 'package:booking100/users/sidebar.dart';
-import 'package:booking100/users/userhomepage.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class UserHomePage extends StatefulWidget {
-  
   const UserHomePage({Key? key}) : super(key: key);
-  
+
   @override
   State<UserHomePage> createState() => _UserHomePageState();
-  
 }
-class _UserHomePageState extends State<UserHomePage> {
 
-  User? user =FirebaseAuth.instance.currentUser;
+class _UserHomePageState extends State<UserHomePage> {
+  User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
 
   @override
   void initState() {
     super.initState();
     FirebaseFirestore.instance
-    .collection("user")
-    .doc(user!.uid)
-    .get()
-    .then((value){
+        .collection("user")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
       this.loggedInUser = UserModel.fromMap(value.data());
-      setState(() {
-        
-      });
+      setState(() {});
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-      title: const Text("INDERA MAHKOTA FUTSAL"),
-      centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 7, 2, 85),
-        elevation: 0,
-      ),
-    body: SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          children: const [
-            TopBar(),
-            // Clock(),
-            BookingCard(),
-            QuickAction(),
-          ],
+        appBar: AppBar(
+          title: const Text("INDERA MAHKOTA FUTSAL"),
+          centerTitle: true,
+          backgroundColor: const Color.fromARGB(255, 7, 2, 85),
+          elevation: 0,
         ),
-      )),
-
-      drawer: const NavigationDrawer()
-    );
-  }
- } 
-
-
-
-class BookingCard extends StatefulWidget {
-  const BookingCard({ Key? key }) : super(key: key);
-
-  @override
-  State<BookingCard> createState() => _BookingCardState();
-}
-
-class _BookingCardState extends State<BookingCard> {
-
-  User? user =FirebaseAuth.instance.currentUser;
-  UserModel loggedInUser = UserModel();
-
-  @override
-  void initState() {
-    super.initState();
-    FirebaseFirestore.instance
-    .collection("user")
-    .doc(user!.uid)
-    .get()
-    .then((value){
-      this.loggedInUser = UserModel.fromMap(value.data());
-      setState(() {
-        
-      });
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-      final searchButton = Material(
-      elevation: 5,
-      borderRadius: BorderRadius.circular(50),
-      color: Colors.black,
-      child: ElevatedButton.icon(
-        onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const SelectCourt()));
-        },
-        icon: const Icon(Icons.sports_soccer,
-        size: 24,
-        color: Colors.black),
-        label: const Text("Booking Now",
-        style: TextStyle(
-          fontSize: 18,
-          color: Colors.black),
-        ),
-        style: ElevatedButton.styleFrom(
-          primary: Colors.white,
-          // side: BorderSide(color: Colors.black),
-          fixedSize: const Size(350, 50),
-          
-        )
-      ),
-    );
-
-      return Container(
-      margin: const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
-      height: 180,
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30.0),
-          gradient: const RadialGradient(
-            colors: [Color.fromARGB(255, 11, 106, 184), Color.fromARGB(255, 7, 2, 85),],
-            focal: Alignment.topCenter,
-            radius: .85,
-          )),
-      padding: const EdgeInsets.all(25.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Welcome ${loggedInUser.username},",
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          height: 1.25,
-                          fontFamily: "BigBottom",
-                          fontWeight: FontWeight.bold)),  
-                          const Text("Let's Booking Now!",
-                          style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 18,
-                          height: 1.25,
-                          fontFamily: "BigBottom",)),              
-                ],
-              ),
-              Image.asset(
-                "assets/ball.png",
-                width: 60,
-              )
+        body: SafeArea(
+            child: SingleChildScrollView(
+          child: Column(
+            children: const [
+              TopBar(),
+              CardBooking(),
+              SizedBox(height: 20),
+              QuickAction(),
+              QuoteCard(),
+              SizedBox(height: 10),
             ],
           ),
-          // const SizedBox(height: 15.0),
-          // searchField,
-          const SizedBox(height: 15.0),
-          searchButton,
-        ],
-      ),
-    );
+        )),
+        drawer: const NavigationDrawer());
   }
 }
 
@@ -179,36 +65,35 @@ class QuickAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 150,
-      width: 355,
+      height: 180,
+      width: 370,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
           Action(
             title: "My Booking",
-            image:
-                "https://thumbs.dreamstime.com/b/clipboard-checklist-icon-symbol-web-site-app-design-clipboard-checklist-icon-symbol-web-site-app-design-179944327.jpg",
+            image: "assets/tuchel1.png",
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const MyBooking()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const MyBooking()));
             },
           ),
           Action(
               title: "Court Details",
-              image:
-                  "https://previews.123rf.com/images/ylivdesign/ylivdesign1609/ylivdesign160902001/62550450-futsal-or-indoor-soccer-field-icon-in-outline-style-on-a-white-background-vector-illustration.jpg",
+              image: "assets/tuchel2.png",
               onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const CourtDetail()));
-              }
-              ),
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CourtDetail()));
+              }),
           Action(
               title: "About Us",
-              image:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0BteiZh_qkGFpbJPhPBq4hEXbVYh7X8XfoQZpMQTcjg3yJYnQCOcbgP-rok532z2RoxA&usqp=CAU",
+              image: "assets/tuchel3.png",
               onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const AboutUs()));
-              }
-              ),
-          
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const AboutUs()));
+              }),
         ],
       ),
     );
@@ -221,37 +106,43 @@ class Action extends StatelessWidget {
   final Function() onTap;
   final bool selected;
   const Action(
-      {required this.title, required this.image, required this.onTap,this.selected = false,Key? key}): super(key: key);
+      {required this.title,
+      required this.image,
+      required this.onTap,
+      this.selected = false,
+      Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.fromLTRB(5, 5, 5, 0),
       child: GestureDetector(
         onTap: onTap,
         child: Column(
           children: [
             Container(
               decoration: BoxDecoration(
-                  border: Border.all(
-                      width: 1, color: const Color.fromARGB(255, 17, 3, 83)),
-                  borderRadius: BorderRadius.circular(3)),
+                color: const Color.fromARGB(255, 11, 106, 184),
+                border: Border.all(width: 2, color: Colors.white38),
+                borderRadius: BorderRadius.circular(12),
+              ),
               child: ClipRRect(
-                child: Image.network(
+                child: Image.asset(
                   image,
-                  width: 80,
-                  height: 80,
-                  fit: BoxFit.cover,
+                  width: 110,
+                  height: 110,
+                  fit: BoxFit.fitWidth,
                 ),
               ),
             ),
             const SizedBox(
-              height: 12.5,
+              height: 5,
             ),
             Text(
               title,
               style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 20,
                   color: selected ? const Color(0xffFF8527) : Colors.black),
             ),
           ],
@@ -264,61 +155,60 @@ class Action extends StatelessWidget {
 
 class TopBar extends StatelessWidget {
   const TopBar({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: <Widget>[
-          ClipPath(
-            clipper: MyClipper(),
-            child: Container(
-              padding: const EdgeInsets.fromLTRB(40, 0, 20, 0),
-              height: 280,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
+    return Column(children: <Widget>[
+      ClipPath(
+        clipper: MyClipper(),
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(40, 0, 20, 0),
+          height: 280,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
                     Color.fromARGB(255, 7, 2, 85),
                     Color.fromARGB(255, 11, 106, 184),
-                  ]
+                  ]),
+              image: DecorationImage(
+                  image: AssetImage("assets/snow.png"), fit: BoxFit.cover)),
+          child: Column(
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            children: const <Widget>[
+              Text(
+                'Life Is Like Futsal, You Need Goals!',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+              Image(
+                image: AssetImage(
+                  "assets/lotus.png",
                 ),
-                image: DecorationImage(
-                  image: AssetImage("assets/snow.png"),
-                  fit: BoxFit.cover
-                )
+                width: 230,
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.centerLeft,
               ),
-              child: Column(
-                // crossAxisAlignment: CrossAxisAlignment.start,
-                children: const <Widget>[
-                        Text('Life Is Like Futsal, You Need Goals!',
-                        style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
-                    Image(
-                      image: AssetImage("assets/Twisting_Tiger.png",),
-                      width: 190,
-                      fit: BoxFit.fitWidth,
-                      alignment: Alignment.centerLeft,
-                      ),
-                      
-                ],
-              ),
-            ),
+            ],
           ),
-        ] 
-    );
+        ),
+      )
+    ]);
   }
 }
 
-class MyClipper extends CustomClipper<Path>{
+class MyClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = Path();
     path.lineTo(0, size.height - 80);
     path.quadraticBezierTo(
-      size.width/2, size.height, size.width, size.height - 80);
-      path.lineTo(size.width, 0);
-      path.close();
+        size.width / 2, size.height, size.width, size.height - 80);
+    path.lineTo(size.width, 0);
+    path.close();
     return path;
   }
 
@@ -329,42 +219,222 @@ class MyClipper extends CustomClipper<Path>{
 }
 
 
-// class Clock extends StatefulWidget {
-//   const Clock({Key? key}) : super(key: key);
+class CardBooking extends StatefulWidget {
+  const CardBooking({Key? key}) : super(key: key);
+  @override
+  State<CardBooking> createState() => _CardBookingState();
+}
 
-//   @override
-//   State<Clock> createState() => _ClockState();
-// }
+class _CardBookingState extends State<CardBooking> {
+  @override
+  Widget build(BuildContext context) {
+    final searchButton = Material(
+      elevation: 10,
+      borderRadius: BorderRadius.circular(30),
+      color: Colors.transparent,
+      child: ElevatedButton.icon(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const SelectCourt()));
+          },
+          icon: const Icon(Icons.sports_soccer, size: 20, color: Colors.white),
+          label: const Text(
+            "Booking Now",
+            style: TextStyle(fontSize: 16, color: Colors.white),
+          ),
+          style: ElevatedButton.styleFrom(
+            primary: const Color.fromARGB(255, 11, 106, 184),
+            side: const BorderSide(width: 1, color: Colors.white38),
+            // side: BorderSide(color: Colors.black),
+            fixedSize: const Size(200, 40),
+          )),
+    );
+    return Stack(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+          child: Container(
+              height: 140,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  boxShadow: const [
+                    BoxShadow(
+                        offset: Offset(0, 4),
+                        blurRadius: 8,
+                        color: Colors.black)
+                  ]),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    "assets/chelsea1.png",
+                    width: 150.0,
+                    height: 150.0,
+                  ),
+                  Column(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(5, 20, 5, 5),
+                        child: Text(
+                          "Book Court & Play\nWith Your Friends Now",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: "BigBottom"),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      searchButton
+                    ],
+                  ),
+                ],
+              )),
+        ),
+      ],
+    );
+  }
+}
 
-// class _ClockState extends State<Clock> {
-//   TimeOfDay _timeOfDay = TimeOfDay.now();
-//   @override
-//   void initState(){
-//     super.initState();
-//     Timer.periodic(Duration(seconds: 1), (timer){
-//       if (_timeOfDay.minute != TimeOfDay.now().minute) {
-//         setState(() {
-//           _timeOfDay = TimeOfDay.now();
-//         });
-//       }
-//     });
-//   }
-//   Widget build(BuildContext context) {
-//     String _period = _timeOfDay.period == DayPeriod.am ? "AM" : "PM";
-//     return Row(
-//       mainAxisAlignment: MainAxisAlignment.center,
-//       children: [
-//         Text("${_timeOfDay.hourOfPeriod}:${_timeOfDay.minute}",
-//         style: Theme.of(context).textTheme.headline3,
-//         ),
-//         const SizedBox(width:5),
-//         RotatedBox(
-//           quarterTurns: 3,
-//           child: Text(_period,
-//           style: TextStyle(fontSize: 16)
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-// }
+
+class QuoteCard extends StatefulWidget {
+  const QuoteCard({Key? key}) : super(key: key);
+
+  @override
+  State<QuoteCard> createState() => _QuoteCardState();
+}
+
+class _QuoteCardState extends State<QuoteCard> {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 160,
+      width: double.infinity,
+      child: ListView(
+        children: <Widget>[
+          CarouselSlider(
+            options: CarouselOptions(
+              aspectRatio: 2,
+              height: 150,
+              enlargeCenterPage: true,
+              autoPlay: true,
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enableInfiniteScroll: true,
+              autoPlayAnimationDuration: const Duration(milliseconds: 800),
+              viewportFraction: 0.8
+              ),
+            items: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Container(
+                margin: const EdgeInsets.all(2),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                          offset: Offset(0, 4),
+                          blurRadius: 8,
+                          color: Colors.black)
+                    ]),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      "assets/mrlukaku.png",
+                      width: 130.0,
+                      height: 150.0,
+                    ),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(0, 20, 0, 5),
+                          child: Text(
+                            '"Jump off your kicking foot.\nAnd you have just one\nchance to make it good!"\n\n- Romelu Lukaku',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "BigBottom"),
+                          ),
+                        ),
+                      ],
+                )),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Container(
+                margin: const EdgeInsets.all(2),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                          offset: Offset(0, 4),
+                          blurRadius: 8,
+                          color: Colors.black)
+                    ]),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      "assets/alonso.png",
+                      width: 120.0,
+                      height: 120.0,
+                    ),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(0, 20, 0, 5),
+                          child: Text(
+                            '"Passion is everything,\non the field and in life!"\n\n- Marcus Alonso',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "BigBottom"),
+                          ),
+                        ),
+                      ],
+                )),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Container(
+                margin: const EdgeInsets.all(2),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                          offset: Offset(0, 4),
+                          blurRadius: 8,
+                          color: Colors.black)
+                    ]),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      "assets/rudiger2.png",
+                      width: 120.0,
+                      height: 120.0,
+                    ),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(0, 20, 0, 5),
+                          child: Text(
+                            '"Reach for the ball,\nfor the stars!"\n\n- Toni Rudiger',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "BigBottom"),
+                          ),
+                        ),
+                      ],
+                )),
+              ),
+            ] 
+          )
+        ],
+      ),
+    );
+  }
+}

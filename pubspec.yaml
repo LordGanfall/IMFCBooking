@@ -92,10 +92,20 @@ flutter:
     - assets/payment.png
     - assets/player.png
     - assets/gg.png
-    - assets/star.png
-    - assets/Twisting_Tiger.png
     - assets/snow.png
-    
+    - assets/chelsea1.png
+    - assets/calendar.png
+    - assets/courtt.png
+    - assets/aboutt.png
+    - assets/lukaku.png
+    - assets/tuchel1.png
+    - assets/tuchel2.png
+    - assets/tuchel3.png
+    - assets/lotus.png
+    - assets/mrlukaku.png
+    - assets/alonso.png
+    - assets/rudiger2.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

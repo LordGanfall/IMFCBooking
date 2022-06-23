@@ -40,7 +40,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     const urlImage = 'assets/textt.png';
     return Drawer(
       child: Material(
-        color: const Color.fromARGB(255, 7, 2, 85),
+        color: const Color.fromARGB(255, 11, 106, 184),
         child: ListView(
           padding: padding,
           children: <Widget>[
@@ -113,9 +113,9 @@ Widget buildHeader({
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(username,
-            style: const TextStyle(fontSize: 20, color: Colors.white),),
+            style: const TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.bold),),
             Text(email,
-            style: const TextStyle(fontSize: 16, color: Colors.white),)
+            style: const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),)
           ],
           )
           ],
