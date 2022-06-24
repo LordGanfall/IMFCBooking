@@ -26,8 +26,8 @@ class BookingGrid extends StatefulWidget {
 
 class _BookingGridState extends State<BookingGrid> {
   Color unselectedColor = Colors.white;
-  Color selectedColor = const Color.fromARGB(255, 7, 2, 85);
-  int selectedCard = -1;
+  Color selectedColor = const Color.fromARGB(255, 90, 167, 230);
+  int selectedCard = - 1;
 
   late String time;
   late DateTime startDateTime;
@@ -61,11 +61,11 @@ class _BookingGridState extends State<BookingGrid> {
       children: [
         Container(
           color: Colors.white,
-          height: 300,
+          height: 370,
           width: double.infinity,
           child: SingleChildScrollView(
             child: GridView.builder(
-              physics: const NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(), 
               shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
@@ -81,7 +81,7 @@ class _BookingGridState extends State<BookingGrid> {
                       borderRadius: BorderRadius.circular(3),
                     ),
                     color: selectedCard == index
-                        ? const Color.fromARGB(255, 7, 2, 85)
+                        ? const Color.fromARGB(255, 90, 167, 230)
                         : Colors.white70,
                     child:
                         Center(child: Text(dateTimeToHours(SlotTime[index]))),
@@ -92,9 +92,9 @@ class _BookingGridState extends State<BookingGrid> {
                       selectedCard = index;
                     });
                     startDateTime = DateTime(
-                        widget.selectedDate!.year,
-                        widget.selectedDate!.month,
-                        widget.selectedDate!.day,
+                      widget.selectedDate!.year,
+                      widget.selectedDate!.month,
+                      widget.selectedDate!.day,
                         SlotTime[index]!.hour,
                         SlotTime[index]!.minute);
                   },

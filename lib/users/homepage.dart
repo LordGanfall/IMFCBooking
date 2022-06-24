@@ -123,7 +123,7 @@ class Action extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 11, 106, 184),
+                color: const Color.fromARGB(255, 90, 167, 230),
                 border: Border.all(width: 2, color: Colors.white38),
                 borderRadius: BorderRadius.circular(12),
               ),
@@ -170,7 +170,7 @@ class TopBar extends StatelessWidget {
                   end: Alignment.bottomCenter,
                   colors: [
                     Color.fromARGB(255, 7, 2, 85),
-                    Color.fromARGB(255, 11, 106, 184),
+                    Color.fromARGB(255, 90, 167, 230),
                   ]),
               image: DecorationImage(
                   image: AssetImage("assets/snow.png"), fit: BoxFit.cover)),
@@ -243,7 +243,7 @@ class _CardBookingState extends State<CardBooking> {
             style: TextStyle(fontSize: 16, color: Colors.white),
           ),
           style: ElevatedButton.styleFrom(
-            primary: const Color.fromARGB(255, 11, 106, 184),
+            primary: const Color.fromARGB(255, 90, 167, 230),
             side: const BorderSide(width: 1, color: Colors.white38),
             // side: BorderSide(color: Colors.black),
             fixedSize: const Size(200, 40),
@@ -424,6 +424,41 @@ class _QuoteCardState extends State<QuoteCard> {
                             '"Reach for the ball,\nfor the stars!"\n\n- Toni Rudiger',
                             style: TextStyle(
                                 fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "BigBottom"),
+                          ),
+                        ),
+                      ],
+                )),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Container(
+                margin: const EdgeInsets.all(2),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                          offset: Offset(0, 4),
+                          blurRadius: 8,
+                          color: Colors.black)
+                    ]),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      "assets/werner.png",
+                      width: 120.0,
+                      height: 120.0,
+                    ),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(0, 20, 0, 5),
+                          child: Text(
+                            '"Be a winner. Stand for\nsomething. Always have\nclass, be humble!"\n\n- Timo Werner',
+                            style: TextStyle(
+                                fontSize: 15,
                                 fontWeight: FontWeight.w500,
                                 fontFamily: "BigBottom"),
                           ),

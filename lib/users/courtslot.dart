@@ -24,7 +24,7 @@ class _CourtSlotState extends State<CourtSlot> {
 
   DateTime selectedValue = DateTime.now();
   // Color unselectedColor = Colors.white;
-  Color selectedColor = const Color.fromARGB(255, 7, 2, 85);
+  Color selectedColor = const Color.fromARGB(255, 90, 167, 230);
   static const TextStyle unsselectedColor = TextStyle(color: Colors.white);
 
   @override

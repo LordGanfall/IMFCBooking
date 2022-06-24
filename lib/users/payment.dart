@@ -2,7 +2,7 @@ import 'package:booking100/users/bookpayment.dart';
 import 'package:flutter/material.dart';
 
 class BookPayment extends StatefulWidget {
-  final DateTime? selectedDate;
+  final DateTime selectedDate;
   final String courtid;
   final String courtname;
   final String courtprice;
@@ -36,61 +36,103 @@ class _BookPaymentState extends State<BookPayment> {
               child: Column(
                 children: [
                   SizedBox(
-                      height: 180,
-                      child: Image.network(
-                          'https://www.nicepng.com/png/detail/408-4083998_background-pic-4-kids-futsal-cartoon.png')),
-                  const Text("Confirm Your Booking",
-                      style: TextStyle(color: Colors.black, fontSize: 26)),
+                      height: 150,
+                      child: Image.asset(
+                          "assets/chelsea1.png")),
+                  const Text("Booking Details",
+                      style: TextStyle(color: Colors.black, fontSize: 26, fontWeight: FontWeight.bold)),
                   const SizedBox(
                     height: 10,
                   ),
                   // ignore: sized_box_for_whitespace
                   Container(
                     width: 380,
-                    height: 280,
+                    height: 230,
                     child: Card(
-                      elevation: 15,
+                      elevation: 30,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(widget.courtid,
-                              style: const TextStyle(
-                                  fontSize: 30, color: Colors.black)),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Text(widget.courtname,
-                              style: const TextStyle(
-                                  fontSize: 28, color: Colors.black)),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(widget.selectedDate.toString(),
-                              style: const TextStyle(
-                                fontSize: 24,
-                                color: Colors.black,
-                              )),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          const Text("Total Payment",
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 26)),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(widget.courtprice,
-                              style: const TextStyle(
-                                  fontSize: 22, color: Colors.black)),
-                        ],
+                      child: Padding(
+                        padding: const EdgeInsets.all(30),
+                        child: Column(
+                          children: [
+                            const SizedBox(height: 10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                               Text(widget.selectedDate.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 22, color: Colors.black)),
+                              ]
+                            ),
+                            const SizedBox(height: 20),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                const Text('Court ID: ',
+                                    style: TextStyle(
+                                        fontSize: 20, color: Colors.black)),
+                                Text(widget.courtid,
+                                    style: const TextStyle(
+                                        fontSize: 20, color: Colors.black)),
+                              ],
+                            ),
+                            const SizedBox(height: 15),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                const Text('Court Name: ',
+                                    style: TextStyle(
+                                        fontSize: 20, color: Colors.black)),
+                                Text(widget.courtname,
+                                    style: const TextStyle(
+                                        fontSize: 20, color: Colors.black)),
+                              ],
+                            ),
+                            const SizedBox(height: 15),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                const Text('Total Payment: ',
+                                    style: TextStyle(
+                                        fontSize: 20, color: Colors.black)),
+                                Text(widget.courtprice,
+                                    style: const TextStyle(
+                                        fontSize: 20, color: Colors.black)),
+                              ],
+                            ),
+                            // const SizedBox(
+                            //   height: 20,
+                            // ),
+                            // Text(widget.courtname,
+                            //     style: const TextStyle(
+                            //         fontSize: 28, color: Colors.black)),
+                            // const SizedBox(
+                            //   height: 20,
+                            // ),
+                            // const SizedBox(
+                            //   height: 10,
+                            // ),
+                            // Text(widget.selectedDate.toString(),
+                            //     style: const TextStyle(
+                            //       fontSize: 24,
+                            //       color: Colors.black,
+                            //     )),
+                            // const SizedBox(
+                            //   height: 20,
+                            // ),
+                            // const Text("Total Payment",
+                            //     style:
+                            //         TextStyle(color: Colors.black, fontSize: 26)),
+                            // const SizedBox(
+                            //   height: 10,
+                            // ),
+                            // Text(widget.courtprice,
+                            //     style: const TextStyle(
+                            //         fontSize: 22, color: Colors.black)),
+                          ],
+                        ),
                       ),
                     ),
                   ),

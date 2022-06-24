@@ -40,7 +40,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     const urlImage = 'assets/textt.png';
     return Drawer(
       child: Material(
-        color: const Color.fromARGB(255, 11, 106, 184),
+        color: const Color.fromARGB(255, 90, 167, 230),
         child: ListView(
           padding: padding,
           children: <Widget>[

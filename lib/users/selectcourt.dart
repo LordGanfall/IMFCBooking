@@ -72,32 +72,42 @@ Widget buildList(Futsal futsal) => GestureDetector(
         padding: const EdgeInsets.all(2.0),
         child: Stack(
           children: [
-            Card(
-                color: Colors.white54,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child: ListTile(
-                  selectedTileColor: Colors.white,
-                  leading: const SizedBox(height: 72, width: 110),
-                  title: Text(futsal.courtid,
-                      style: const TextStyle(color: Colors.black)),
-                  subtitle: Text('Court Name: ${futsal.courtname}',
-                      style: const TextStyle(color: Colors.black, fontSize: 16)),
-                )),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4),
-                      bottomLeft: Radius.circular(4)),
-                  child: Image.network(
-                    futsal.imageurl,
-                    height: 70,
-                    width: 110,
-                    fit: BoxFit.fill,
+            // ignore: sized_box_for_whitespace
+            Container(
+              height: 90,
+              child: Card(
+                semanticContainer: true,
+                elevation: 8,
+                margin: const EdgeInsets.all(5),
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    // side: const BorderSide(color: Colors.black, width: 1),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: ListTile(
+                    selectedTileColor: Colors.white,
+                    leading:  Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              child: ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(4),
+                                      bottomLeft: Radius.circular(4)),
+                                  child: Image.network(
+                                    futsal.imageurl,
+                                    height: 100,
+                                    width: 110,
+                                    fit: BoxFit.cover
+                                    ,
+                                  ),
+                                  ),
+                            ),
+                    title: Text(futsal.courtid,
+                        style: const TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w500)),
+                    subtitle: Text('Court Name: ${futsal.courtname}',
+                        style: const TextStyle(color: Colors.black, fontSize: 16)),
                   )),
             ),
+           
           ],
         ),
       ));
