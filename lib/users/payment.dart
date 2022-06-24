@@ -47,11 +47,11 @@ class _BookPaymentState extends State<BookPayment> {
                   // ignore: sized_box_for_whitespace
                   Container(
                     width: 380,
-                    height: 230,
+                    height: 270,
                     child: Card(
-                      elevation: 30,
+                      elevation: 40,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(30),
@@ -66,7 +66,8 @@ class _BookPaymentState extends State<BookPayment> {
                                         fontSize: 22, color: Colors.black)),
                               ]
                             ),
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 30),
+                           
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
@@ -78,7 +79,7 @@ class _BookPaymentState extends State<BookPayment> {
                                         fontSize: 20, color: Colors.black)),
                               ],
                             ),
-                            const SizedBox(height: 15),
+                            const SizedBox(height: 25),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
@@ -90,7 +91,7 @@ class _BookPaymentState extends State<BookPayment> {
                                         fontSize: 20, color: Colors.black)),
                               ],
                             ),
-                            const SizedBox(height: 15),
+                            const SizedBox(height: 25),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
@@ -102,40 +103,13 @@ class _BookPaymentState extends State<BookPayment> {
                                         fontSize: 20, color: Colors.black)),
                               ],
                             ),
-                            // const SizedBox(
-                            //   height: 20,
-                            // ),
-                            // Text(widget.courtname,
-                            //     style: const TextStyle(
-                            //         fontSize: 28, color: Colors.black)),
-                            // const SizedBox(
-                            //   height: 20,
-                            // ),
-                            // const SizedBox(
-                            //   height: 10,
-                            // ),
-                            // Text(widget.selectedDate.toString(),
-                            //     style: const TextStyle(
-                            //       fontSize: 24,
-                            //       color: Colors.black,
-                            //     )),
-                            // const SizedBox(
-                            //   height: 20,
-                            // ),
-                            // const Text("Total Payment",
-                            //     style:
-                            //         TextStyle(color: Colors.black, fontSize: 26)),
-                            // const SizedBox(
-                            //   height: 10,
-                            // ),
-                            // Text(widget.courtprice,
-                            //     style: const TextStyle(
-                            //         fontSize: 22, color: Colors.black)),
                           ],
                         ),
                       ),
                     ),
                   ),
+                  const SizedBox(height: 40),
+                  const Divider(color: Colors.grey, thickness: 2.0,indent: 30, endIndent: 30,),
                   const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

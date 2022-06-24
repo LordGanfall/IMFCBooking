@@ -94,9 +94,6 @@ flutter:
     - assets/gg.png
     - assets/snow.png
     - assets/chelsea1.png
-    - assets/calendar.png
-    - assets/courtt.png
-    - assets/aboutt.png
     - assets/lukaku.png
     - assets/tuchel1.png
     - assets/tuchel2.png
@@ -107,6 +104,7 @@ flutter:
     - assets/rudiger2.png
     - assets/werner.png
     - assets/buss.png
+    - assets/drogba.png
 
   #   - images/a_dot_ham.jpeg
 

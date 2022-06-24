@@ -52,7 +52,8 @@ class _MyBookingListState extends State<MyBookingList> {
           bookid: data.bookid, 
           courtid: data.courtid, 
           courtname: data.courtname,
-           email: data.email,
+          email: data.email,
+          courtprice: data.courtprice,
 
         )));
     },
@@ -68,11 +69,14 @@ class _MyBookingListState extends State<MyBookingList> {
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: ListTile(
-                leading: const Icon(
-                  Icons.sports_soccer,
-                  color: Colors.black,
-                  size: 30,
-                ),
+                leading: const Image(
+                  image: AssetImage('assets/mrlukaku.png')
+                  ),
+                // const Icon(
+                //   Icons.sports_soccer,
+                //   color: Colors.black,
+                //   size: 30,
+                // ),
                 title: Text(
                   data.bookid,
                   style: const TextStyle(
@@ -103,6 +107,7 @@ class Book {
   String? courtid;
   String? courtname;
   String? totalpayment;
+  String? courtprice;
 
   Book(
       {this.bookid,
@@ -110,6 +115,7 @@ class Book {
       this.email,
       this.courtid,
       this.courtname,
+      this.courtprice,
       this.totalpayment,});
 
   String toRawJson() => json.encode(toJson());
@@ -126,6 +132,7 @@ class Book {
         courtid: json["courtid"],
         courtname: json["courtname"],
         email: json["email"],
+        courtprice: json["courtprice"]
       );
 
   Map<String, dynamic> toJson() => {

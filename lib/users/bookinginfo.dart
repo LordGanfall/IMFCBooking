@@ -11,14 +11,16 @@ class BookingInfo extends StatefulWidget {
   final String courtname;
   final Timestamp bookdate;
   final String email;
+  final String courtprice;
 
-  
-  const BookingInfo({Key? key,
-  required this.bookid,
-  required this.courtid,
-  required this.courtname,
-  required this.bookdate,
-  required this.email,
+  const BookingInfo({
+    Key? key,
+    required this.bookid,
+    required this.courtid,
+    required this.courtname,
+    required this.bookdate,
+    required this.courtprice,
+    required this.email,
   }) : super(key: key);
 
   @override
@@ -26,8 +28,7 @@ class BookingInfo extends StatefulWidget {
 }
 
 class _BookingInfoState extends State<BookingInfo> {
-
-   User? user = FirebaseAuth.instance.currentUser;
+  User? user = FirebaseAuth.instance.currentUser;
 
   @override
   void initState() {
@@ -36,9 +37,9 @@ class _BookingInfoState extends State<BookingInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
-      title: const Text("INDERA MAHKOTA FUTSAL"),
-      centerTitle: true,
+      appBar: AppBar(
+        title: const Text("INDERA MAHKOTA FUTSAL"),
+        centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 7, 2, 85),
         elevation: 0,
       ),
@@ -46,68 +47,118 @@ class _BookingInfoState extends State<BookingInfo> {
         child: Column(
           children: <Widget>[
             Container(
-                height: 600,
-                color: Colors.white,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                   const SizedBox(height: 30),
-                    Center(
-                      child: Text("Booking Info",
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.lato(
-                              fontSize: 28, color: Colors.black)),
-                    ),
-                    const SizedBox(height: 16),
-                    // ignore: sized_box_for_whitespace
-                    Container(
-                       width: 380,
-                    height: 280,
-                      child: Card(
-                        elevation: 16,
-                        child: Column(
-                          children: [
-                           const Text(
-                              'Booking ID',
-                              style: TextStyle(color: Colors.black, fontSize: 26),
-                          
-                    ),
-                    Text(
-                      widget.bookid,
-                      style: const TextStyle(color: Colors.black, fontSize: 20),
-                    ),
-                   const SizedBox(height: 35),
-                   const Divider(thickness: 1, color: Colors.black),
-                   const SizedBox(height: 35),
-                     Text(
-                      "Email: " + widget.email,
-                      style: const TextStyle(color: Colors.black, fontSize: 20),
-                    ),
-                   const SizedBox(height: 5),
-                    Text(
-                      "Court: " + widget.courtid,
-                      style: const TextStyle(color: Colors.black, fontSize: 20),
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      "Court: " + widget.courtname,
-                      style: const TextStyle(color: Colors.black, fontSize: 20),
-                    ),
-
-                    const SizedBox(height: 5),
-                    Text(
-                      "Book Date: " +
-                          DateParser.parseDateTimeyMdAddJM(widget.bookdate),
-                      style: const TextStyle(color: Colors.black, fontSize: 20),
-                    ),
-                   const SizedBox(height: 5),
-                  ],
-                ),
-              ),
-                ),
-                          ],
-                        ),
+              height: 600,
+              color: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(
+                      height: 150, child: Image.asset("assets/mrlukaku.png")),
+                  Center(
+                    child: Text("Booking Info",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.lato(
+                            fontSize: 28, color: Colors.black)),
+                  ),
+                  const SizedBox(height: 10),
+                  // ignore: sized_box_for_whitespace
+                  Container(
+                    width: 400,
+                    height: 350,
+                    child: Card(
+                      elevation: 40,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 10),
+                          const Text('Booking ID',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 22)),
+                          Text(
+                            widget.bookid,
+                            style: const TextStyle(
+                                color: Colors.black, fontSize: 20),
+                          ),
+                          const SizedBox(height: 20),
+                          const Divider(color: Colors.grey, thickness: 2.0,indent: 30, endIndent: 30,),
+                          const SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Text('Email : ',
+                                      style: TextStyle(
+                                          fontSize: 20, color: Colors.black)),
+                                  Text(widget.email,
+                                      style: const TextStyle(
+                                          fontSize: 20, color: Colors.black)),
+                                  ],
+                                ),
+                                const SizedBox(height: 20),
+                                 Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Text('Booking Date : ',
+                                      style: TextStyle(
+                                          fontSize: 20, color: Colors.black)),
+                                  Text(DateParser.parseDateTimeyMdAddJM(
+                                    widget.bookdate),
+                                      style: const TextStyle(
+                                          fontSize: 20, color: Colors.black)),
+                                  ],
+                                ),
+                                const SizedBox(height: 20),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Text('Court ID : ',
+                                      style: TextStyle(
+                                          fontSize: 20, color: Colors.black)),
+                                  Text(widget.courtid,
+                                      style: const TextStyle(
+                                          fontSize: 20, color: Colors.black)),
+                                  ],
+                                ),
+                                const SizedBox(height: 20),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Text('Court Name : ',
+                                      style: TextStyle(
+                                          fontSize: 20, color: Colors.black)),
+                                  Text(widget.courtname,
+                                      style: const TextStyle(
+                                          fontSize: 20, color: Colors.black)),
+                                  ],
+                                ),
+                                const SizedBox(height: 20),
+                                 Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Text('Total Payment : ',
+                                      style: TextStyle(
+                                          fontSize: 20, color: Colors.black)),
+                                  Text(widget.courtprice,
+                                      style: const TextStyle(
+                                          fontSize: 20, color: Colors.black)),
+                                  ],
+                                ),
+                               
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

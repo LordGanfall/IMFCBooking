@@ -120,8 +120,8 @@ class _BookingGridState extends State<BookingGrid> {
               sendDateTime(startDateTime);
             },
             child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text("Book Now", style: GoogleFonts.lato(fontSize: 20))),
+                padding: const EdgeInsets.fromLTRB(30, 6, 30, 6),
+                child: Text("Book Now", style: GoogleFonts.lato(fontSize: 22))),
           ),
         )),
       ],
