@@ -7,12 +7,14 @@ class CourtSlot extends StatefulWidget {
   final String courtname;
   final String courtprice;
   final String imageurl;
-  
-  const CourtSlot({Key? key,
-   required this.courtid, 
-   required this.courtname, 
-   required this.courtprice, 
-   required this.imageurl}) : super(key: key);
+
+  const CourtSlot(
+      {Key? key,
+      required this.courtid,
+      required this.courtname,
+      required this.courtprice,
+      required this.imageurl})
+      : super(key: key);
 
   @override
   State<CourtSlot> createState() => _CourtSlotState();
@@ -25,7 +27,7 @@ class _CourtSlotState extends State<CourtSlot> {
   DateTime selectedValue = DateTime.now();
   // Color unselectedColor = Colors.white;
   Color selectedColor = const Color.fromARGB(255, 90, 167, 230);
-  static const TextStyle unsselectedColor = TextStyle(color: Colors.white);
+  static const TextStyle unsselectedColor = TextStyle(color: Colors.black, fontWeight: FontWeight.w400);
 
   @override
   void initState() {
@@ -35,14 +37,14 @@ class _CourtSlotState extends State<CourtSlot> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-      title: const Text("INDERA MAHKOTA FUTSAL"),
-      centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 7, 2, 85),
-        elevation: 0,
-      ),
-            // ignore: avoid_unnecessary_containers
-            body: Container(
+        appBar: AppBar(
+          title: const Text("INDERA MAHKOTA FUTSAL"),
+          centerTitle: true,
+          backgroundColor: const Color.fromARGB(255, 7, 2, 85),
+          elevation: 0,
+        ),
+        // ignore: avoid_unnecessary_containers
+        body: Container(
             child: Column(children: [
           Container(
             color: Colors.black,
@@ -50,18 +52,11 @@ class _CourtSlotState extends State<CourtSlot> {
             child: Stack(
               textDirection: TextDirection.ltr,
               children: [
-                ShaderMask(
-                  shaderCallback: (rect) {
-                    return const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Colors.black, Colors.transparent],
-                    ).createShader(Rect.fromLTRB(0, 0, rect.width, 190));
-                  },
-                  blendMode: BlendMode.dstIn,
-                  child: Image.network(widget.imageurl,
-                      fit: BoxFit.fill, height: 200, width: double.infinity),
-                ),
+                  SizedBox(
+                    height: 260,
+                    child: Image.network(widget.imageurl,
+                        fit: BoxFit.fill, height: 200, width: double.infinity),
+                  ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4.0),
                   child: Column(
@@ -94,7 +89,7 @@ class _CourtSlotState extends State<CourtSlot> {
                         monthTextStyle: unsselectedColor,
                         initialSelectedDate: DateTime.now(),
                         selectionColor: selectedColor,
-                        selectedTextColor: Colors.white,
+                        selectedTextColor: Colors.black,
                         onDateChange: (date) {
                           // New date selected
                           setState(() {
@@ -102,14 +97,14 @@ class _CourtSlotState extends State<CourtSlot> {
                           });
                         },
                       ),
-                     const SizedBox(height: 6),
+                      const SizedBox(height: 6),
                       Center(
-                        child: Text('Court Name : ' +widget.courtname,
+                        child: Text('Court Name : ${widget.courtname}',
                             style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w600,
-                                )),
+                              color: Colors.white,
+                              fontSize: 22.0,
+                              fontWeight: FontWeight.w600,
+                            )),
                       )
                     ],
                   ),

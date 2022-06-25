@@ -1,8 +1,8 @@
 import 'package:booking100/model/user_model.dart';
+import 'package:booking100/users/about.dart';
+import 'package:booking100/users/courtdetails.dart';
 import 'package:booking100/users/homepage.dart';
 import 'package:booking100/users/logout.dart';
-import 'package:booking100/users/profile.dart';
-import 'package:booking100/users/schedule.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -66,14 +66,14 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             ),
             const SizedBox(height: 10),
             buildMenuItem(
-              text: 'Court Schedule',
-              icon: Icons.calendar_month,
+              text: 'Court Detail',
+              icon: Icons.sports_soccer,
               onClicked: () => selectedItem(context, 1),
             ),
             const SizedBox(height: 10),
             buildMenuItem(
-              text: 'Profile',
-              icon: Icons.person,
+              text: 'About Us',
+              icon: Icons.people,
               onClicked: () => selectedItem(context, 2),
             ),
             const SizedBox(height: 20),
@@ -148,10 +148,10 @@ Widget buildMenuItem({
       Navigator.of(context).push(MaterialPageRoute(builder: (context) => const UserHomePage())); 
       break;
       case 1:
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Schedule())); 
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CourtDetail())); 
       break;
       case 2:
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const UserProfile())); 
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AboutUs())); 
       break;
       case 3: //logout function
       Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LogoutAlert())); 

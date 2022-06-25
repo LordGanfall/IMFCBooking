@@ -1,7 +1,9 @@
 import 'package:booking100/model/user_model.dart';
 import 'package:booking100/users/about.dart';
 import 'package:booking100/users/courtdetails.dart';
+import 'package:booking100/users/courtschedule.dart';
 import 'package:booking100/users/mybooking.dart';
+import 'package:booking100/users/profile.dart';
 import 'package:booking100/users/selectcourt.dart';
 import 'package:booking100/users/sidebar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -79,20 +81,20 @@ class QuickAction extends StatelessWidget {
             },
           ),
           Action(
-              title: "Court Details",
+              title: "Schedule",
               image: "assets/tuchel2.png",
               onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const CourtDetail()));
+                        builder: (context) => const CourtSchedule()));
               }),
           Action(
-              title: "About Us",
+              title: "Profile",
               image: "assets/tuchel3.png",
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const AboutUs()));
+                    MaterialPageRoute(builder: (context) => const UserProfile()));
               }),
         ],
       ),

@@ -56,7 +56,7 @@ class _BookPaymentState extends State<BookingPayment> {
               showBackView: isCvvFocused,
               obscureCardNumber: true,
               obscureCardCvv: true,
-              onCreditCardWidgetChange: ( CreditCardBrand) {},
+              onCreditCardWidgetChange: (CreditCardBrand) {},
             ),
             Expanded(
                 child: SingleChildScrollView(
@@ -87,6 +87,7 @@ class _BookPaymentState extends State<BookingPayment> {
                       labelText: 'Card Holder',
                     ),
                   ),
+                  const SizedBox(height: 90),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -99,7 +100,7 @@ class _BookPaymentState extends State<BookingPayment> {
                       //width: double.infinity,
                       width: 330,
 
-                      margin: EdgeInsets.all(10.0),
+                      margin: const EdgeInsets.all(10.0),
 
                       child: const Center(
                         child: Text(

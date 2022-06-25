@@ -52,22 +52,28 @@ class _CourtListState extends State<CourtList> {
           decoration: const InputDecoration(labelText: 'Price')
         ),
         const SizedBox(height: 20),
-        ElevatedButton(
-          child: const Text("Update"),
-          onPressed: () async{
-            final String courtid = _courtidController.text;
-            final String courtname = _courtnameController.text;
-            final String price = _priceController.text;
-            if(price != null){
-              await _courts
-              .doc(documentSnapshot!.id)
-              .update({"courtid": courtid, "courtname": courtname, "price": price});
-              _courtidController.text = '';
-              _courtnameController.text = '';
-              _priceController.text = '';
+        Align(
+          alignment: Alignment.centerRight,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: const Color.fromARGB(255, 7, 2, 85)
+            ),
+            child: const Text("Update"),
+            onPressed: () async{
+              final String courtid = _courtidController.text;
+              final String courtname = _courtnameController.text;
+              final String price = _priceController.text;
+              if(price != null){
+                await _courts
+                .doc(documentSnapshot!.id)
+                .update({"courtid": courtid, "courtname": courtname, "price": price});
+                _courtidController.text = '';
+                _courtnameController.text = '';
+                _priceController.text = '';
+              }
             }
-          }
-          )
+            ),
+        )
       ]),
       );
     });

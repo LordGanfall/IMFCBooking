@@ -153,7 +153,7 @@ class _AddUserState extends State<AddUser> {
     final registerButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
-      color: const Color.fromARGB(255, 4, 52, 92),
+      color: const Color.fromARGB(255, 7, 2, 85),
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -174,40 +174,51 @@ class _AddUserState extends State<AddUser> {
         backgroundColor: const Color.fromARGB(255, 7, 2, 85),
         elevation: 0,
       ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Container(
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.all(36.0),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    const SizedBox(height: 30),
+      body: Column(
+        children: [
+          SizedBox(height: 150, child: Image.asset("assets/alonso.png")),
+          const Text("Add New User",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold)),
+          Center(
+            child: SingleChildScrollView(
+              child: Container(
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        const SizedBox(height: 30),
 
-                    fullnameField,
-                    const SizedBox(height: 25,),
+                        fullnameField,
+                        const SizedBox(height: 20,),
 
-                    usernameField,
-                    const SizedBox(height: 25,),
-                    
-                    emailField,
-                    const SizedBox(height: 25,),
+                        usernameField,
+                        const SizedBox(height: 20,),
+                        
+                        emailField,
+                        const SizedBox(height: 20,),
 
-                    passwordField,
-                    const SizedBox(height: 25,),
-                     
-                    registerButton,
-                    const SizedBox(height: 15,),
-                  ],
-                ),
+                        passwordField,
+                        const SizedBox(height: 20,),
+                         
+                        registerButton,
+                        const SizedBox(height: 15,),
+                      ],
+                    ),
+                  ),
+                ), 
               ),
-            ), 
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
