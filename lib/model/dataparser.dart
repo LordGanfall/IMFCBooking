@@ -21,4 +21,9 @@ class DateParser {
     DateTime parsedTimeStamp = timestamp.toDate();
     return DateFormat.yMd().add_jm().format(parsedTimeStamp);
   }
+
+  static DateTime parseTimestamptoDateTime(Timestamp timestamp) {
+    DateTime parsedTimeStamp = timestamp.toDate();
+    return parsedTimeStamp;
+  }
 }

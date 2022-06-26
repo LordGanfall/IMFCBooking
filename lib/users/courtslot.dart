@@ -53,9 +53,9 @@ class _CourtSlotState extends State<CourtSlot> {
               textDirection: TextDirection.ltr,
               children: [
                   SizedBox(
-                    height: 260,
+                    height: 230,
                     child: Image.network(widget.imageurl,
-                        fit: BoxFit.fill, height: 200, width: double.infinity),
+                        fit: BoxFit.fill, width: double.infinity),
                   ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4.0),

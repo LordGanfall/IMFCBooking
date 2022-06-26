@@ -13,7 +13,7 @@ class MyBooking extends StatefulWidget {
 }
 
 class _MyBookingState extends State<MyBooking> {
-  final controller = TextEditingController();
+  // final controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,22 +25,23 @@ class _MyBookingState extends State<MyBooking> {
       ),
       body: Column(
         children: <Widget>[
-          Container(
-            margin: const EdgeInsets.all(5),
-            child: TextField(
-              controller: controller,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.search),
-                hintText: 'Booking Date',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: const BorderSide(color: Colors.black)
-                  )
-              ),
-              // onChanged: ,
-            ),
-          ),
-          SizedBox(height: 150, child: Image.asset("assets/drogba.png")),
+          // Container(
+          //   margin: const EdgeInsets.all(5),
+          //   child: TextField(
+          //     controller: controller,
+          //     decoration: InputDecoration(
+          //       prefixIcon: const Icon(Icons.search),
+          //       hintText: 'Booking Date',
+          //       border: OutlineInputBorder(
+          //         borderRadius: BorderRadius.circular(20),
+          //         borderSide: const BorderSide(color: Colors.black)
+          //         )
+          //     ),
+          //     // onChanged: ,
+          //   ),
+          // ),
+          const SizedBox(height: 10),
+          SizedBox(height: 180, child: Image.asset("assets/drogba.png")),
           const Text(
             'Booking History',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),

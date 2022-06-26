@@ -1,3 +1,4 @@
+import 'package:booking100/admin/bookingreport.dart';
 import 'package:booking100/model/dataparser.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,7 @@ class _BookingDataState extends State<BookingData> {
       ),
       body: Column(
         children: [
-          SizedBox(height: 180, child: Image.asset("assets/lukaku.png")),
+          SizedBox(height: 140, child: Image.asset("assets/lukaku.png")),
           const Text("Booking Details",
               style: TextStyle(
                   color: Colors.black,
@@ -120,6 +121,23 @@ class _BookingDataState extends State<BookingData> {
               ],
             ),
           ),
+          const SizedBox(height: 20),
+           SizedBox(
+                        width: 360,
+                        height: 50,
+                        child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BookingReportPdf(documentSnapshot: documentSnapshot)));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: const Color.fromARGB(255, 7, 2, 85),
+                            ),
+                            child: const Text("Generate Pdf",
+                            style: TextStyle(fontSize: 20))),
+                      )
         ],
       ),
       

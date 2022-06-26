@@ -1,5 +1,9 @@
+import 'dart:developer';
+
+import 'package:booking100/model/dataparser.dart';
 import 'package:booking100/model/utils.dart';
 import 'package:booking100/users/payment.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,8 +30,43 @@ class BookingGrid extends StatefulWidget {
 
 class _BookingGridState extends State<BookingGrid> {
   Color unselectedColor = Colors.white;
+  Color bookedColor = Colors.grey;
   Color selectedColor = const Color.fromARGB(255, 90, 167, 230);
+  Color disabledColor = Colors.blueGrey;
   int selectedCard = - 1;
+
+  late List<DateTime>? bookedDateTimeList;
+  bool isLoading = true;
+
+  Future<List<DateTime>?> getBookedDates(List<DateTime?> SlotTime) async{
+    var db = FirebaseFirestore.instance;
+    final prefs = await SharedPreferences.getInstance();
+
+    QuerySnapshot querySnapshot = await db
+    .collection('booklist')
+    .get();
+
+    List<DateTime>? bookDateTimes = [];
+    for (var i = 0; i < querySnapshot.docs.length; i++){
+      bookDateTimes.add(DateParser.parseTimestamptoDateTime(
+        querySnapshot.docs[i]['bookdate']
+      ));
+    }
+    for (var i = 0; i < SlotTime.length - querySnapshot.docs.length; i++) {
+      bookDateTimes.add(new DateTime(2017, 9, 7,  17, 30));
+    }
+    inspect(bookDateTimes);
+    setState(() {
+      bookedDateTimeList = bookDateTimes;
+      isLoading = false;
+    });
+  }
+
+  @override
+  void initState(){
+    getBookedDates(SlotTime);
+    super.initState();
+  }
 
   late String time;
   late DateTime startDateTime;
@@ -61,10 +100,12 @@ class _BookingGridState extends State<BookingGrid> {
       children: [
         Container(
           color: Colors.white,
-          height: 370,
+          height: 300,
           width: double.infinity,
           child: SingleChildScrollView(
-            child: GridView.builder(
+            child: isLoading
+            ? const Center(child: SizedBox(width: 40, height: 40, child: CircularProgressIndicator()))
+            : GridView.builder(
               physics: const NeverScrollableScrollPhysics(), 
               shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -74,30 +115,70 @@ class _BookingGridState extends State<BookingGrid> {
               ),
               itemCount: SlotTime.length,
               itemBuilder: (context, index) {
+                var color;
+                Function()? selectedAction = (){
+                  setState(() {
+                    selectedCard = index;
+                  });
+                  startDateTime = DateTime(
+                    widget.selectedDate!.year,
+                            widget.selectedDate!.month,
+                            widget.selectedDate!.day,
+                            SlotTime[index]!.hour,
+                            SlotTime[index]!.minute);
+                };
+                final templateDate = DateTime(
+                  widget.selectedDate!.year,
+                            widget.selectedDate!.month,
+                            widget.selectedDate!.day,
+                            SlotTime[index]!.hour,
+                            SlotTime[index]!.minute);
+                if (bookedDateTimeList!.contains(templateDate)) {
+                        color = bookedColor;
+                        selectedAction = null;
+                      } else if (templateDate.isBefore(DateTime.now())) {
+                        color = disabledColor;
+                        selectedAction = null;
+                      } else if (selectedCard == index) {
+                        color = selectedColor;
+                        selectedAction = () {
+                        setState(() {
+                          // ontap of each card, set the defined int to the grid view index
+                          selectedCard = index;
+                        });
+                        startDateTime = DateTime(
+                            widget.selectedDate!.year,
+                            widget.selectedDate!.month,
+                            widget.selectedDate!.day,
+                            SlotTime[index]!.hour,
+                            SlotTime[index]!.minute);
+                      };
+                      } else {
+                        color = unselectedColor;
+                        selectedAction = () {
+                        setState(() {
+                          // ontap of each card, set the defined int to the grid view index
+                          selectedCard = index;
+                        });
+                        startDateTime = DateTime(
+                            widget.selectedDate!.year,
+                            widget.selectedDate!.month,
+                            widget.selectedDate!.day,
+                            SlotTime[index]!.hour,
+                            SlotTime[index]!.minute);
+                      };
+                      }
                 return GestureDetector(
                   child: Card(
                     elevation: 5,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(3),
                     ),
-                    color: selectedCard == index
-                        ? const Color.fromARGB(255, 90, 167, 230)
-                        : Colors.white70,
+                    color: color,
                     child:
                         Center(child: Text(dateTimeToHours(SlotTime[index]))),
                   ),
-                  onTap: () {
-                    setState(() {
-                      // ontap of each card, set the defined int to the grid view index
-                      selectedCard = index;
-                    });
-                    startDateTime = DateTime(
-                      widget.selectedDate!.year,
-                      widget.selectedDate!.month,
-                      widget.selectedDate!.day,
-                        SlotTime[index]!.hour,
-                        SlotTime[index]!.minute);
-                  },
+                  onTap: selectedAction,
                 );
               },
             ),
@@ -158,7 +239,4 @@ class _BookingGridState extends State<BookingGrid> {
   }
 }
 
-// courtid: widget.courtid,
-//                             courtname: widget.courtname,
-//                             selectedDate: startDateTime,
-//                             courtprice: widget.courtprice,
+

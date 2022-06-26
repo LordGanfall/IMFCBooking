@@ -1,5 +1,7 @@
 import 'package:booking100/users/homepage.dart';
+import 'package:booking100/users/paymentsuccess.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_form.dart';
@@ -87,7 +89,7 @@ class _BookPaymentState extends State<BookingPayment> {
                       labelText: 'Card Holder',
                     ),
                   ),
-                  const SizedBox(height: 90),
+                  const SizedBox(height: 40),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -119,10 +121,22 @@ class _BookPaymentState extends State<BookingPayment> {
                         print('valid!');
                         sendData();
 
-                        Navigator.push(
+                        CoolAlert.show(
+                            context: context,
+                            type: CoolAlertType.success,
+                            text: "Your transaction was successful!",
+                            onConfirmBtnTap: (){
+                               Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const UserHomePage()));
+                            } 
+                          );
+
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => const PaymentSuccess()));
                       } else {
                         print('invalid!');
                       }

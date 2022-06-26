@@ -1,3 +1,4 @@
+import 'package:booking100/admin/userreport.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class UserData extends StatefulWidget {
 class _UserDataState extends State<UserData> {
   final DocumentSnapshot documentSnapshot;
   _UserDataState(this.documentSnapshot);
+
 
   @override
   void initState() {
@@ -109,6 +111,23 @@ class _UserDataState extends State<UserData> {
               ],
             ),
           ),
+          const SizedBox(height: 20),
+          SizedBox(
+                        width: 360,
+                        height: 50,
+                        child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UserReportPdf(documentSnapshot: documentSnapshot)));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: const Color.fromARGB(255, 7, 2, 85),
+                            ),
+                            child: const Text("Generate Pdf",
+                            style: TextStyle(fontSize: 20))),
+                      )
         ],
       ),
     );

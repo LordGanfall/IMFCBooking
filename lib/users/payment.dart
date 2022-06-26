@@ -108,7 +108,7 @@ class _BookPaymentState extends State<BookPayment> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
                   const Divider(color: Colors.grey, thickness: 2.0,indent: 30, endIndent: 30,),
                   const SizedBox(height: 20),
                   Row(

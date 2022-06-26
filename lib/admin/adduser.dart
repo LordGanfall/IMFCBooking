@@ -167,7 +167,6 @@ class _AddUserState extends State<AddUser> {
     );
 
      return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
       title: const Text("INDERA MAHKOTA FUTSAL"),
       centerTitle: true,

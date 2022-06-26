@@ -12,10 +12,10 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-    User? user = FirebaseAuth.instance.currentUser;
+  User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
 
-    @override
+  @override
   void initState() {
     super.initState();
     FirebaseFirestore.instance
@@ -27,17 +27,18 @@ class _UserProfileState extends State<UserProfile> {
       setState(() {});
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      title: const Text("INDERA MAHKOTA FUTSAL"),
-      centerTitle: true,
+        title: const Text("INDERA MAHKOTA FUTSAL"),
+        centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 7, 2, 85),
         elevation: 0,
       ),
       body: SingleChildScrollView(
-       child: Column(
+        child: Column(
           children: <Widget>[
             const SizedBox(height: 20),
             const Center(
@@ -47,63 +48,167 @@ class _UserProfileState extends State<UserProfile> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(130, 10, 130, 0),
+              padding: const EdgeInsets.fromLTRB(100, 10, 100, 0),
               child: Center(
-                child: Image.asset("assets/pp.png"),
+                child: Image.asset("assets/werner.png"),
               ),
             ),
             const SizedBox(height: 30),
-            Card(
-          elevation: 8,
-          shadowColor: const Color.fromARGB(255, 7, 2, 85),
-          margin: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-          shape:  OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10), 
-              borderSide: const BorderSide(color: Colors.white)
-          ),
-          child: ListTile(
-            title: Text("Full Name:  ${loggedInUser.fullname}",
-            style: const TextStyle(
-              fontSize: 18
+            Container(
+              height: 170,
+              width: 400,
+              child: Card(
+                  elevation: 30,
+                  shadowColor: const Color.fromARGB(255, 7, 2, 85),
+                  margin: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                  shape: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.white)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Column(
+                      children: <Widget>[
+                        const SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              "Email: ",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                            Text(
+                              "${loggedInUser.email}",
+                              style: const TextStyle(fontSize: 18),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              "Full Name: ",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                            Text(
+                              "${loggedInUser.fullname}",
+                              style: const TextStyle(fontSize: 18),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              "Username: ",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                            Text(
+                              "${loggedInUser.username}",
+                              style: const TextStyle(fontSize: 18),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )),
             ),
-            ),
-          ),
+             const SizedBox(height: 20),
+           SizedBox(
+                        width: 360,
+                        height: 50,
+                        child: ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                              context: context, 
+                              builder: (context) => const FeedbackDialog());
+                            },
+                            //   Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //           builder: (context) => BookingReportPdf(documentSnapshot: documentSnapshot)));
+                            // },
+                            style: ElevatedButton.styleFrom(
+                              primary: const Color.fromARGB(255, 7, 2, 85),
+                            ),
+                            child: const Text("Feedback",
+                            style: TextStyle(fontSize: 20))),
+                      ),
+          ],
         ),
-        Card(
-          elevation: 8,
-          shadowColor: const Color.fromARGB(255, 7, 2, 85),
-          margin: const EdgeInsets.fromLTRB(30, 25, 30, 0),
-          shape:  OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10), 
-              borderSide: const BorderSide(color: Colors.white)
-          ),
-          child: ListTile(
-            title: Text("Username:  ${loggedInUser.username}",
-             style: const TextStyle(
-              fontSize: 18
-            ),),
-          ),
-        ),
-        Card(
-          elevation: 8,
-          shadowColor: const Color.fromARGB(255, 7, 2, 85),
-          margin: const EdgeInsets.fromLTRB(30, 25, 30, 20),
-          shape:  OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10), 
-              borderSide: const BorderSide(color: Colors.white)
-          ),
-          child: ListTile(
-            title: Text("Email:  ${loggedInUser.email}",
-             style: const TextStyle(
-              fontSize: 18
-            ),),
-            
-          ),
-        ),       
-        ],
-        ),
-       ),
+      ),
       drawer: const NavigationDrawer(),
+    );
+  }
+}
+
+class FeedbackDialog extends StatefulWidget{
+  const FeedbackDialog({Key? key}) : super(key: key);
+
+  @override
+  State<FeedbackDialog> createState() => _FeedbackDiaglogState();
+}
+
+class _FeedbackDiaglogState extends State<FeedbackDialog>{
+  final TextEditingController _controller = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey();
+
+  @override
+  void dispose(){
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context){
+    return AlertDialog(
+      content: Form(
+        key: _formKey,
+        child: TextFormField(
+          controller: _controller,
+          keyboardType: TextInputType.multiline,
+          decoration: const InputDecoration(
+            hintText: "Enter Your Feedback",
+            filled: true,
+          ),
+          maxLines: 5,
+          maxLength: 500,
+          textInputAction: TextInputAction.done,
+          validator: (String? text){
+            if (text == null || text.isEmpty) {
+              return 'Please Enter Your Feeback';
+            }
+            return null;
+          },
+        )
+        ),
+        actions: [
+          TextButton(
+            child: const Text("Cancel"),
+            onPressed: () => Navigator.pop(context), 
+          ),
+          TextButton(
+            child: const Text("Send"),
+            onPressed: () async {
+              if (_formKey.currentState!.validate()) {
+                String message;
+
+                try{
+                  final collection = FirebaseFirestore.instance.collection('feedback');
+                  await collection.doc().set({
+                    'timestamp' : FieldValue.serverTimestamp(),
+                    'feedbackk' : _controller.text
+                  });
+                  message = 'Feedback Sent Successfully';
+                }
+                catch (_){
+                  message = 'Error When Sending Feedback';
+                }
+              }
+            }, 
+          )
+        ],
     );
   }
 }
