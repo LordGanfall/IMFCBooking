@@ -55,9 +55,9 @@ dependencies:
   pdf: ^3.8.1
   printing: ^5.9.1
 
-# flutter_icons:
-#   android: true
-#   image_path: "assets/IMFC.png"
+flutter_icons:
+  android: true
+  image_path: "assets/IMFC.png"
 
 
 dev_dependencies:

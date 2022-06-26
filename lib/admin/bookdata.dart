@@ -123,7 +123,7 @@ class _BookingDataState extends State<BookingData> {
           ),
           const SizedBox(height: 20),
            SizedBox(
-                        width: 360,
+                        width: 280,
                         height: 50,
                         child: ElevatedButton(
                             onPressed: () {

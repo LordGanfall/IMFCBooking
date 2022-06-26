@@ -68,7 +68,7 @@ class QuickAction extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 180,
-      width: 370,
+      width: 380,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
@@ -164,7 +164,7 @@ class TopBar extends StatelessWidget {
         clipper: MyClipper(),
         child: Container(
           padding: const EdgeInsets.fromLTRB(40, 0, 20, 0),
-          height: 280,
+          height: 300,
           width: double.infinity,
           decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -183,14 +183,14 @@ class TopBar extends StatelessWidget {
                 'Life Is Like Futsal, You Need Goals!',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold),
               ),
               Image(
                 image: AssetImage(
                   "assets/lotus.png",
                 ),
-                width: 230,
+                width: 220,
                 fit: BoxFit.fitWidth,
                 alignment: Alignment.centerLeft,
               ),
@@ -239,10 +239,10 @@ class _CardBookingState extends State<CardBooking> {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const SelectCourt()));
           },
-          icon: const Icon(Icons.sports_soccer, size: 20, color: Colors.white),
+          icon: const Icon(Icons.sports_soccer, size: 14, color: Colors.white),
           label: const Text(
             "Booking Now",
-            style: TextStyle(fontSize: 16, color: Colors.white),
+            style: TextStyle(fontSize: 14, color: Colors.white),
           ),
           style: ElevatedButton.styleFrom(
             primary: const Color.fromARGB(255, 90, 167, 230),
@@ -273,15 +273,15 @@ class _CardBookingState extends State<CardBooking> {
                 children: [
                   Image.asset(
                     "assets/chelsea1.png",
-                    width: 150.0,
-                    height: 150.0,
+                    width: 120.0,
+                    height: 120.0,
                   ),
                   Column(
                     children: [
                       const Padding(
                         padding: EdgeInsets.fromLTRB(5, 20, 5, 5),
                         child: Text(
-                          "Book Court & Play\nWith Your Friends Now",
+                          "Book Court & Play\nWith Your Friends!",
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
@@ -353,7 +353,7 @@ class _QuoteCardState extends State<QuoteCard> {
                         const Padding(
                           padding: EdgeInsets.fromLTRB(0, 20, 0, 5),
                           child: Text(
-                            '"Jump off your kicking foot.\nAnd you have just one\nchance to make it good!"\n\n- Romelu Lukaku',
+                            '"Jump off your kicking\nfoot. And you have just\none chance to make\nit good!"\n\n- Romelu Lukaku',
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
@@ -388,7 +388,7 @@ class _QuoteCardState extends State<QuoteCard> {
                         const Padding(
                           padding: EdgeInsets.fromLTRB(0, 20, 0, 5),
                           child: Text(
-                            '"Passion is everything,\non the field and in life!"\n\n- Marcus Alonso',
+                            '"Passion is everything,\non the field and\nin life!"\n\n- Marcus Alonso',
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
@@ -458,7 +458,7 @@ class _QuoteCardState extends State<QuoteCard> {
                         const Padding(
                           padding: EdgeInsets.fromLTRB(0, 20, 0, 5),
                           child: Text(
-                            '"Be a winner. Stand for\nsomething. Always have\nclass, be humble!"\n\n- Timo Werner',
+                            '"Be a winner. Stand for\nsomething. Always\nhave class, be humble!"\n\n- Timo Werner',
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,

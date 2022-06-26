@@ -116,7 +116,7 @@ class _BookPaymentState extends State<BookPayment> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
-                        width: 360,
+                        width: 280,
                         height: 50,
                         child: ElevatedButton(
                             onPressed: () {

@@ -100,7 +100,7 @@ class _BookPaymentState extends State<BookingPayment> {
                     ),
                     child: Container(
                       //width: double.infinity,
-                      width: 330,
+                      width: 280,
 
                       margin: const EdgeInsets.all(10.0),
 
