@@ -1,6 +1,7 @@
 import 'package:booking100/model/user_model.dart';
 import 'package:booking100/users/about.dart';
 import 'package:booking100/users/courtdetails.dart';
+import 'package:booking100/users/feedbackk.dart';
 import 'package:booking100/users/homepage.dart';
 import 'package:booking100/users/logout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -76,6 +77,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               icon: Icons.people,
               onClicked: () => selectedItem(context, 2),
             ),
+             const SizedBox(height: 10),
+            buildMenuItem(
+              text: 'Feedback',
+              icon: Icons.feedback,
+              onClicked: () => selectedItem(context, 3),
+            ),
             const SizedBox(height: 20),
             const Divider(color: Colors.white70, thickness: 1.0),
             const SizedBox(height: 20),
@@ -84,7 +91,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
              buildMenuItem(
               text: 'Log Out',
               icon: Icons.exit_to_app,
-              onClicked: () => selectedItem(context, 3),
+              onClicked: () => selectedItem(context, 4),
             ),
              ],
               ),
@@ -153,7 +160,10 @@ Widget buildMenuItem({
       case 2:
       Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AboutUs())); 
       break;
-      case 3: //logout function
+      case 3:
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Feedbackk())); 
+      break;
+      case 4: //logout function
       Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LogoutAlert())); 
       break;
     }

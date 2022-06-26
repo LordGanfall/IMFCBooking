@@ -8,10 +8,10 @@ class UserFeedback extends StatefulWidget {
   const UserFeedback({Key? key}) : super(key: key);
 
   @override
-  State<UserFeedback> createState() => _CourtListState();
+  State<UserFeedback> createState() => _UserFeedbackState();
 }
 
-class _CourtListState extends State<UserFeedback> {
+class _UserFeedbackState extends State<UserFeedback> {
 
   final CollectionReference _courts = FirebaseFirestore.instance.collection('feedback');
 
@@ -32,15 +32,32 @@ class _CourtListState extends State<UserFeedback> {
               itemCount: streamSnapshot.data!.docs.length,
               itemBuilder: (context, index){
                 final DocumentSnapshot documentSnapshot = streamSnapshot.data!.docs[index];
-                return Card(
-                  margin: const EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  child: ListTile(
-                    title: Row(
-                      children: [
-                        Text(documentSnapshot['feedbackk']),
-                      ],
+                return Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+                  child: SizedBox(
+                    height: 60,
+                    width: double.infinity,
+                    child: Card(
+                      elevation: 10,
+                      margin: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+                      child: ListTile(
+                        title: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 0),
+                              child: Text(documentSnapshot['name'], style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Text(documentSnapshot['feedbackk']),
+                            ),
+                          ],
+                        ),
+                        ),
                     ),
-                    ),
+                  ),
                 );
               }
             );

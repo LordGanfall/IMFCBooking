@@ -16,12 +16,12 @@ class _CourtScheduleState extends State<CourtSchedule> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-      title: const Text("INDERA MAHKOTA FUTSAL"),
-      centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 7, 2, 85),
-        elevation: 0,
-      ),
+      // appBar: AppBar(
+      // title: const Text("INDERA MAHKOTA FUTSAL"),
+      // centerTitle: true,
+      //   backgroundColor: const Color.fromARGB(255, 7, 2, 85),
+      //   elevation: 0,
+      // ),
       body: StreamBuilder(
         stream: _users.snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot){

@@ -4,6 +4,7 @@ import 'package:booking100/users/courtdetails.dart';
 import 'package:booking100/users/courtschedule.dart';
 import 'package:booking100/users/mybooking.dart';
 import 'package:booking100/users/profile.dart';
+import 'package:booking100/users/schedule.dart';
 import 'package:booking100/users/selectcourt.dart';
 import 'package:booking100/users/sidebar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -87,7 +88,7 @@ class QuickAction extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const CourtSchedule()));
+                        builder: (context) => const Schedule()));
               }),
           Action(
               title: "Profile",
@@ -248,7 +249,7 @@ class _CardBookingState extends State<CardBooking> {
             primary: const Color.fromARGB(255, 90, 167, 230),
             side: const BorderSide(width: 1, color: Colors.white38),
             // side: BorderSide(color: Colors.black),
-            fixedSize: const Size(200, 40),
+            fixedSize: const Size(180, 40),
           )),
     );
     return Stack(
@@ -353,7 +354,7 @@ class _QuoteCardState extends State<QuoteCard> {
                         const Padding(
                           padding: EdgeInsets.fromLTRB(0, 20, 0, 5),
                           child: Text(
-                            '"Jump off your kicking\nfoot. And you have just\none chance to make\nit good!"\n\n- Romelu Lukaku',
+                            '"Jump off your kicking\nfoot. And you have\njust one chance to\nmake it good!"\n\n- Romelu Lukaku',
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
