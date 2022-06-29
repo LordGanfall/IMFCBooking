@@ -82,73 +82,83 @@ class _BookingInfoState extends State<BookingInfo> {
                                 color: Colors.black, fontSize: 20),
                           ),
                           const SizedBox(height: 20),
-                          const Divider(color: Colors.grey, thickness: 2.0,indent: 30, endIndent: 30,),
+                          const Divider(
+                            color: Colors.grey,
+                            thickness: 2.0,
+                            indent: 30,
+                            endIndent: 30,
+                          ),
                           const SizedBox(height: 20),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                             child: Column(
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     const Text('Email : ',
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.black)),
-                                  Text(widget.email,
-                                      style: const TextStyle(
-                                          fontSize: 20, color: Colors.black)),
+                                        style: TextStyle(
+                                            fontSize: 20, color: Colors.black)),
+                                    Text(widget.email,
+                                        style: const TextStyle(
+                                            fontSize: 20, color: Colors.black)),
                                   ],
                                 ),
                                 const SizedBox(height: 20),
-                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     const Text('Booking Date : ',
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.black)),
-                                  Text(DateParser.parseDateTimeyMdAddJM(
-                                    widget.bookdate),
-                                      style: const TextStyle(
-                                          fontSize: 20, color: Colors.black)),
+                                        style: TextStyle(
+                                            fontSize: 20, color: Colors.black)),
+                                    Text(
+                                        DateParser.parseDateTimeyMdAddJM(
+                                            widget.bookdate),
+                                        style: const TextStyle(
+                                            fontSize: 20, color: Colors.black)),
                                   ],
                                 ),
                                 const SizedBox(height: 20),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     const Text('Court ID : ',
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.black)),
-                                  Text(widget.courtid,
-                                      style: const TextStyle(
-                                          fontSize: 20, color: Colors.black)),
+                                        style: TextStyle(
+                                            fontSize: 20, color: Colors.black)),
+                                    Text(widget.courtid,
+                                        style: const TextStyle(
+                                            fontSize: 20, color: Colors.black)),
                                   ],
                                 ),
                                 const SizedBox(height: 20),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     const Text('Court Name : ',
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.black)),
-                                  Text(widget.courtname,
-                                      style: const TextStyle(
-                                          fontSize: 20, color: Colors.black)),
+                                        style: TextStyle(
+                                            fontSize: 20, color: Colors.black)),
+                                    Text(widget.courtname,
+                                        style: const TextStyle(
+                                            fontSize: 20, color: Colors.black)),
                                   ],
                                 ),
                                 const SizedBox(height: 20),
-                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     const Text('Total Payment : ',
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.black)),
-                                  Text(widget.courtprice,
-                                      style: const TextStyle(
-                                          fontSize: 20, color: Colors.black)),
+                                        style: TextStyle(
+                                            fontSize: 20, color: Colors.black)),
+                                    Text(widget.courtprice,
+                                        style: const TextStyle(
+                                            fontSize: 20, color: Colors.black)),
                                   ],
                                 ),
-                               
                               ],
                             ),
                           ),
