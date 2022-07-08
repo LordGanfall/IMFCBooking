@@ -22,9 +22,7 @@ Admin
 
 ![ui3](https://user-images.githubusercontent.com/74654331/178048955-384202a0-6de5-4555-b8b2-80c180ae6109.jpg)
 
-![ui4](https://user-images.githubusercontent.com/74654331/178048988-7f64510b-5763-4fc5-8e91-d38c5e281890.jpg)
-
-![bookinghistory](https://user-images.githubusercontent.com/74654331/178049042-a45781f5-1abd-4071-a453-b6a1701c10ac.PNG)
+![ui4](https://user-images.githubusercontent.com/74654331/178048988-7f64510b-5763-4fc5-8e91-d38c5e281890.jpg) ![bookinghistory](https://user-images.githubusercontent.com/74654331/178049042-a45781f5-1abd-4071-a453-b6a1701c10ac.PNG)
 
 
 ### >Admin
