@@ -1,6 +1,6 @@
 **Final Year Project - Court Booking System**
 
->>User
+User
 - Book Court
 - View Court Availability
 - View Court Schedule
@@ -13,6 +13,6 @@ Admin
 - Manage Booking
 - View Feedback
 
-**Interface**
+>**Interface**
 
 
