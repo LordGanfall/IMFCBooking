@@ -1,6 +1,6 @@
-**#Final Year Project - Court Booking System**
+**Final Year Project - Court Booking System**
 
-##User
+>>User
 - Book Court
 - View Court Availability
 - View Court Schedule
