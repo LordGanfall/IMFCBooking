@@ -16,7 +16,9 @@ Admin
 ## **Interface**
 
 ### User
-![ui1](https://user-images.githubusercontent.com/74654331/178047996-604e1561-8bfe-4b7b-b5c7-788edd98079f.jpg) ![ui2](https://user-images.githubusercontent.com/74654331/178048917-0bb8647b-088c-4ee6-9592-b8f4eb62017c.jpg)
+![ui1](https://user-images.githubusercontent.com/74654331/178047996-604e1561-8bfe-4b7b-b5c7-788edd98079f.jpg) 
+
+![ui2](https://user-images.githubusercontent.com/74654331/178048917-0bb8647b-088c-4ee6-9592-b8f4eb62017c.jpg)
 
 ![ui3](https://user-images.githubusercontent.com/74654331/178048955-384202a0-6de5-4555-b8b2-80c180ae6109.jpg)
 
