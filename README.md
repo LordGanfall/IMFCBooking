@@ -1,16 +1,30 @@
-# booking100
+# **Final Year Project - Court Booking System**
 
-A new Flutter project.
+User
+- Book Court
+- View Court Availability
+- View Court Schedule
+- Give Feedback
+- View Booking History
 
-## Getting Started
+Admin
+- Manage User
+- Manage Court
+- Manage Booking
+- View Feedback
 
-This project is a starting point for a Flutter application.
+## **Interface**
 
-A few resources to get you started if this is your first Flutter project:
+### User
+![ui1](https://user-images.githubusercontent.com/74654331/178047996-604e1561-8bfe-4b7b-b5c7-788edd98079f.jpg) 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![ui2](https://user-images.githubusercontent.com/74654331/178048917-0bb8647b-088c-4ee6-9592-b8f4eb62017c.jpg)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![ui3](https://user-images.githubusercontent.com/74654331/178048955-384202a0-6de5-4555-b8b2-80c180ae6109.jpg)
+
+![ui4](https://user-images.githubusercontent.com/74654331/178048988-7f64510b-5763-4fc5-8e91-d38c5e281890.jpg) ![bookinghistory](https://user-images.githubusercontent.com/74654331/178049042-a45781f5-1abd-4071-a453-b6a1701c10ac.PNG)
+
+
+### Admin
+
+![ui5](https://user-images.githubusercontent.com/74654331/178049118-09e91955-d45a-4961-8ef5-0019c6e5f142.jpg)
