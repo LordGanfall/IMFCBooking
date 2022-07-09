@@ -32,7 +32,6 @@ class _BookingInfoState extends State<BookingInfo> {
 
   @override
   void initState() {
-    // date1 == date;
   }
   @override
   Widget build(BuildContext context) {
